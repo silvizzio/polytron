@@ -1,122 +1,149 @@
-# template-docs
+# polytron
 
-Reusable starter for Vizzio digital-twin documentation sites. Next.js, MDX (next-mdx-remote), Tailwind, deploys to Vercel. Sidebar, search, table of contents, PDF export, and the doc image pipeline all work out of the box.
+Documentation site for POLYTRON.AI: the Polytron One platform user guide, and the
+field procedures for 360 and DJI area scanning.
 
-Every doc site (rsg, efm/analyst, efm/user) is built from this template and served under a subpath on vizzio.space.
+Built on the Vizzio `template-docs` scaffold. Next.js, MDX (next-mdx-remote),
+Tailwind, deployed to Vercel and served at `https://www.vizzio.space/polytron`.
 
-## Start a new project
+## Content structure
 
-1. Click "Use this template" on GitHub, or clone this repo.
-2. Rename the project in `package.json` (the `"name"` field).
-3. `npm install`
-4. `npm run dev` and open http://localhost:3000/project
+Pages live in `content/docs` as `NN-slug.mdx`. The sidebar and the section
+grouping are derived from the frontmatter, so there is no nav file to maintain.
 
-This template ships with `basePath: '/project'`, so it serves under `/project`, not the bare root. Your next step is to change that slug to your own.
+| Order | File | Section |
+|---|---|---|
+| 01 | `01-overview.mdx` | Getting started |
+| 02 | `02-polytron-one-getting-started.mdx` | Polytron One |
+| 03 | `03-cameras.mdx` | Polytron One |
+| 04 | `04-live-view.mdx` | Polytron One |
+| 05 | `05-playback.mdx` | Polytron One |
+| 06 | `06-notifications.mdx` | Polytron One |
+| 07 | `07-settings.mdx` | Polytron One |
+| 08 | `08-indoor-congested-area.mdx` | Scanning Field Guides |
+| 09 | `09-indoor-area.mdx` | Scanning Field Guides |
+| 10 | `10-outdoor-area.mdx` | Scanning Field Guides |
+| 11 | `11-3d-reconstruction-mapping.mdx` | Scanning Field Guides |
 
-## Step 1: set your basePath (do this first)
+Superseded template content sits in `content/_archive` and is not built.
 
-The template is scoped under `/project`. Every new site must replace `/project` with its own slug (for example `/efm/analyst`). Miss one of these and images or the PDF will break. Change it in all of these:
+### Frontmatter
 
-- `next.config.ts`: the `basePath` value, and the root redirect `destination`
-- `src/app/page.tsx`: the hero and quick-link `href` values, and the logo path
-- `src/components/doc-header.tsx`, `sidebar.tsx`, `mobile-nav.tsx`: the `<img src="/project/logo.svg">` path
-- `src/components/doc-image.tsx`: the `/project/api/img/` url
-- `src/components/print-button.tsx` and `full-guide-button.tsx`: the `fetch('/project/api/pdf...')` calls
-- `src/app/api/pdf/route.ts`: the `baseUrl` (it appends `/project` to the origin)
+```yaml
+---
+title: "Cameras"
+order: 3
+section: "Polytron One"
+description: "One line, used for the page description."
+---
+```
 
-A find-and-replace of `/project` to `/yourslug` across `src` and `next.config.ts` covers all of these. Verify afterward that nothing stray remains.
+`order` drives both the sidebar sequence and the prev/next links. `section`
+creates the sidebar group; sections appear in the order of their lowest `order`
+value. Renumbering a page means renaming its file too, since the filename stem
+is the URL slug.
 
-## Step 2: set the domain env var (required for PDF)
+## Images
 
-The PDF route renders live pages with headless Chromium, so it needs the deployed origin. Without this the PDF falls back to localhost and fails.
+Source images live in `private/images/docs`, flat, named to match their page
+prefix (`03-camera-add.png`). They are served through `/polytron/api/img/` by
+`src/app/api/img/[...path]/route.ts`, not from `public`.
 
-In Vercel, the project's Settings, Environment Variables (Production):
+Reference them by bare filename in MDX:
 
-    NEXT_PUBLIC_BASE_URL = https://your-project.vercel.app
+```md
+![The Add Camera dialog with the IP range scan](03-camera-add.png)
+```
 
-Redeploy after setting it.
+The `img` element is mapped to `DocImage`, which resolves the basename against
+the API route. Alt text becomes the caption. An em dash splits it into a bold
+title and a caption below it.
 
-## Step 3: deploy and wire into the router
+Supported extensions: `.jpg .jpeg .png .svg .webp`.
 
-1. Push to GitHub and import the repo in Vercel. Framework is Next.js, no extra config. It builds with `next build`.
-2. Keep the project's own `.vercel.app` domain alive; the vizzio.space router proxies to it.
-3. In the `vizzio-space` router repo (corporate-owned, under the DevUE24 account; requires access to that repo), add a rewrite pair in `vercel.json` so `vizzio.space/yourslug` proxies to your deployment:
+The first image in a page is also its cover on the landing page, resolved by
+`getDocCover()` in `src/lib/docs.ts`. A page with no image falls back to a
+gradient.
 
-        { "source": "/yourslug", "destination": "https://your-project.vercel.app/yourslug" },
-        { "source": "/yourslug/:path*", "destination": "https://your-project.vercel.app/yourslug/:path*" }
+### Image watcher
 
-Order more specific slugs above less specific ones.
+`tools/watch_images.py` converts PNGs dropped into `raw-images/` and writes them
+into `private/images/docs`. See `tools/WATCH-README.md`.
 
-## Where things live
+## Video
 
-- `content/docs/*.mdx` are the chapters. This is what you edit per project. Filenames become URL slugs (`04-persona-b.mdx` serves at `/docs/04-persona-b`).
-- `content/_archive/` holds dormant reference chapters. Not built or served.
-- `private/images/docs/` holds processed doc images, served through the streaming image route (`/api/img`). Do not commit raw PNGs here.
-- `raw-images/` is where you drop source PNGs before processing. Emptied after.
-- `tools/` holds the image pipeline: `name_images.py` (compress raw PNGs to JPG), `process_and_clean.sh` (process, commit, clear), `watch_images.py` (watch mode). See `tools/WATCH-README.md`.
-- `src/lib/docs.ts` reads chapters and frontmatter. Leave it unless changing the docs model.
-- `src/components/` is the site shell (sidebar, header, TOC, MDX components). Project-agnostic.
-- `src/app/page.tsx` is the landing page. Edit its copy and section list per project.
+The four capture-cycle clips are H.264 MP4 in `public/video`, referenced with an
+absolute path that includes the basePath:
 
-## Writing a chapter
+```jsx
+<video controls loop muted playsInline preload="metadata"
+  src="/polytron/video/08-congested-walk-pause-cycle.mp4" />
+```
 
-Every file in `content/docs/` needs frontmatter. The sidebar groups by `section` and orders by `order`:
+These arrived from Notion as GIFs of 46 to 102 MB. GitHub rejects any file over
+100 MB, so they must be converted before commit:
 
-    ---
-    title: Overview
-    section: Getting Started
-    order: 1
-    role: OPERATOR A
-    description: One line shown on the landing card.
-    ---
+```bash
+ffmpeg -i input.gif -movflags faststart -pix_fmt yuv420p \
+  -vf "scale='min(1280,iw)':-2" -r 20 \
+  -c:v libx264 -crf 30 -preset slow -an output.mp4
+```
 
-    Body in MDX. Standard markdown plus the custom components below.
+That takes 291 MB of GIF down to about 14 MB. Video does not render in the PDF
+export, which uses headless Chromium.
 
-- `title` shows in the sidebar and page header.
-- `section` is the sidebar group and the landing "Browse by section" group.
-- `order` sorts across the whole site, not per section.
-- `role` is optional, for persona chapters.
-- `description` is optional, shown on the landing card.
+## Local development
 
-## Available components
+```bash
+npm install
+npm run dev
+```
 
-Use these directly in MDX. They are defined in `src/components/mdx-components.tsx`.
+Open http://localhost:3000/polytron. The site is scoped under `/polytron` by
+`basePath` in `next.config.ts`; the bare root redirects there.
 
-- `<Callout type="info">...</Callout>`: highlighted note. Types: info, warning.
-- `<ScreenshotPlaceholder caption="..." />`: grey image placeholder. Use for image slots until a real screenshot exists.
-- `<StepList><Step number={1}>...</Step></StepList>`: numbered procedure.
-- `<Kbd>K</Kbd>`: keyboard key.
-- `<ReferenceTable headers={["A","B"]} rows={[["1","2"]]} />`: do NOT use in MDX. Complex array props break the MDX build. Use a plain markdown table instead.
-- `<DetectionClassTable />`: self-contained detection class reference table. No props.
-- `<CoreWorkflowDiagram />`: self-contained workflow diagram. No props.
-- `<ArchitectureDiagram />`: self-contained architecture diagram. No props.
+After renaming or renumbering pages, clear the route cache:
 
-Note: standard markdown tables render styled automatically. For image slots, prefer `ScreenshotPlaceholder` over markdown images in template content; markdown images require a real file in `private/images/docs/` and will fail the build if missing.
+```bash
+rm -rf .next && npm run dev
+```
 
-## Adding real images
+## Adding a page
 
-1. Export source PNGs.
-2. Drop them in `raw-images/`.
-3. Run `tools/process_and_clean.sh "message"` (or `python3 tools/name_images.py`) to compress to JPG under `private/images/docs/`.
-4. Reference in MDX with a markdown image; the filename maps to `/yourslug/api/img/<file>`.
+1. Create `content/docs/NN-slug.mdx` with the frontmatter above.
+2. Put its images in `private/images/docs` with a matching `NN-` prefix.
+3. Add the page to the section list in `src/app/page.tsx` if it should appear on
+   the landing page.
 
-## Conventions
+Internal links in MDX compile to plain anchors, so they need the basePath
+written out:
 
-- No em dashes anywhere. Use commas, colons, or parentheses.
-- No spaces around slashes (write type/phase, not type / phase).
-- Tables teach meaning, not raw UI values.
+```md
+[Cameras](/polytron/docs/03-cameras)
+```
 
-## Version
+Links in TSX use `next/link`, which applies the basePath itself, so those stay
+relative (`/docs/03-cameras`).
 
-New sites start at v1.0.0. The version shows in the sidebar, mobile nav, and PDF header. Update `package.json` version and those display strings together on a release.
+## Deployment
 
-## Scripts
+Vercel project `polytron`, framework Next.js, no extra config.
 
-- `npm run dev` local dev server
-- `npm run build` production build
-- `npm run start` serve the production build
-- `npm run lint` eslint
+Required environment variable (Production):NEXT_PUBLIC_BASE_URL = https://polytron.vercel.app 
+The PDF route renders live pages with headless Chromium and needs a real origin.
+Point it at the project's own `.vercel.app` domain, not `www.vizzio.space`, so
+it does not fetch back through the proxy.
 
-## Deploy
+The `.vercel.app` domain stays live. `vizzio.space` rewrites to it:
 
-Push to GitHub and import the repo in Vercel. Builds with `next build`. Set `NEXT_PUBLIC_BASE_URL` (Step 2) or the PDF export will fail.
+```json
+{ "source": "/polytron", "destination": "https://polytron.vercel.app/polytron" },
+{ "source": "/polytron/:path*", "destination": "https://polytron.vercel.app/polytron/:path*" }
+```
+
+Both rules are needed; a single `:path*` rule misses the bare `/polytron` root.
+
+## Source material
+
+Content was imported from four Notion scanning field guides and the Polytron One
+V1.5 user guide draft. Notion is no longer the source of truth; edit the MDX.

@@ -72,3 +72,16 @@ export function getPrevNext(slug: string): {
     next: index < docs.length - 1 ? docs[index + 1] : null,
   }
 }
+
+// First image referenced in a doc, resolved to the served URL. Used for the
+// landing page cover cards so they track the content instead of a fixed map.
+export function getDocCover(slug: string): string | null {
+  const filePath = path.join(DOCS_PATH, `${slug}.mdx`)
+  if (!fs.existsSync(filePath)) return null
+  const raw = fs.readFileSync(filePath, 'utf8')
+  const { content } = matter(raw)
+  const match = content.match(/!\[[^\]]*\]\(([^)\s]+)\)/)
+  if (!match) return null
+  const filename = path.basename(match[1])
+  return `/polytron/api/img/${filename}`
+}
