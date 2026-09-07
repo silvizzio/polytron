@@ -22,10 +22,9 @@ export default function Sidebar({ docsBySection, lastUpdated }: Props) {
       <div style={{ position: 'sticky', top: 0, height: '100vh', overflowY: 'auto', borderRight: '1px solid hsl(var(--border))', background: 'hsl(var(--background))' }} className="sidebar-scroll">
         <div style={{ padding: '16px 0 16px', borderBottom: '1px solid hsl(var(--border))', marginBottom: '12px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '0 16px' }}>
-            <img src="/polytron/logo.svg" alt="Project" width={24} height={24} style={{ flexShrink: 0, display: 'block' }} />
-            <div>
-              <p style={{ fontSize: '12px', fontWeight: 500, lineHeight: 1.3 }}>Project</p>
-              <p style={{ fontSize: '10px', color: 'hsl(var(--muted-foreground))' }}>v1.0 · {lastUpdated?.monthYear ?? 'July 2026'}</p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '7px' }}>
+              <img src="/polytron/logo.svg" alt="POLYTRON.AI" style={{ display: 'block', width: '148px', height: 'auto' }} />
+              <p style={{ fontSize: '10px', color: 'hsl(var(--muted-foreground))' }}>Documentation · v1.0 · {lastUpdated?.monthYear ?? 'July 2026'}</p>
             </div>
           </div>
         </div>

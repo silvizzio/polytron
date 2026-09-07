@@ -6,8 +6,8 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://polytron.vercel.app'),
-  title: 'Project Documentation',
-  description: 'Project documentation.',
+  title: 'POLYTRON.AI Documentation',
+  description: 'Platform user guide and scanning field procedures for POLYTRON.AI.',
 }
 
 export default function RootLayout({
