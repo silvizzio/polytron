@@ -129,7 +129,7 @@ relative (`/docs/03-cameras`).
 
 Vercel project `polytron`, framework Next.js, no extra config.
 
-Required environment variable (Production):NEXT_PUBLIC_BASE_URL = https://polytron.vercel.app 
+Required environment variable (Production):NEXT_PUBLIC_BASE_URL = https://polytron-ai.vercel.app 
 The PDF route renders live pages with headless Chromium and needs a real origin.
 Point it at the project's own `.vercel.app` domain, not `www.vizzio.space`, so
 it does not fetch back through the proxy.
@@ -137,8 +137,8 @@ it does not fetch back through the proxy.
 The `.vercel.app` domain stays live. `vizzio.space` rewrites to it:
 
 ```json
-{ "source": "/polytron", "destination": "https://polytron.vercel.app/polytron" },
-{ "source": "/polytron/:path*", "destination": "https://polytron.vercel.app/polytron/:path*" }
+{ "source": "/polytron", "destination": "https://polytron-ai.vercel.app/polytron" },
+{ "source": "/polytron/:path*", "destination": "https://polytron-ai.vercel.app/polytron/:path*" }
 ```
 
 Both rules are needed; a single `:path*` rule misses the bare `/polytron` root.

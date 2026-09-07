@@ -5,7 +5,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://polytron.vercel.app'),
+  metadataBase: new URL('https://polytron-ai.vercel.app'),
   title: 'POLYTRON.AI Documentation',
   description: 'Platform user guide and scanning field procedures for POLYTRON.AI.',
 }
