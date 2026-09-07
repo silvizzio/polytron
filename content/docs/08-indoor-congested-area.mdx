@@ -1,0 +1,98 @@
+---
+title: "Indoor Congested Area"
+order: 8
+section: "Scanning Field Guides"
+description: "Insta360 capture procedure for tight or crowded interiors, at 1.6 m tripod height with 2 to 3 m pause spacing."
+---
+
+Operational instructions for live 3D mapping and virtual tour creation.
+
+## 1. Executive summary and purpose
+
+Your spatial capture workflow gives the core imagery that is necessary to generate high-fidelity digital twins, 3D maps, and immersive virtual tours in the **Polytron.AI** platform. These assets drive operational awareness, let teams inspect remotely, and give precise visualisation.
+
+## 2. Hardware requirements and pre-recording setup
+
+### Essential hardware checklist
+
+- **Insta360 360 camera:** the primary capture device for panoramic spherical imagery.
+- **Tripod:** a rigid, stable mount.
+- **Power and memory:** spare batteries for extended operations, and a minimum of **128 GB memory storage**.
+- **Mobile control device:** a smartphone or tablet that runs the Insta360 app, for remote monitoring and capture control.
+
+### Camera configuration setup
+
+1. **Power on:** press the **Power** button once to turn on the camera.
+2. **Video settings:** set the recording resolution to **5.7K at 30 FPS**.
+3. **App pair (optional):** enable Bluetooth and Wi-Fi on your mobile device to connect to the Insta360 app for remote start and stop.
+4. **Mounting height:** for indoor congested areas with static capture at all points, mount the camera at **1.6 meters (5 feet 3 inches)** above ground level. Make sure that the rig is stable and level.
+
+![Camera on the tripod at 1.6 m, front view](08-congested-camera-front.jpg)
+
+![Camera on the tripod at 1.6 m, side view](08-congested-camera-side.jpg)
+
+### Environmental best practices
+
+**Height consistency:** keep the 1.6 meter mounting height for the full capture session.
+
+**Wall clearance:** keep at least one arm's length of clearance from walls and structural barriers.
+
+**Lens clearance:** make sure that all lenses are clean and are not obstructed by straps, mounts, or cables.
+
+**Doorway transitions:** pause before you enter a doorway, walk through while the camera records continuously, then pause again after you exit.
+
+**Pacing:** walk at a steady pace of approximately 1 meter per second to prevent motion blur and drift.
+
+## 3. Standardized operational workflow
+
+### Operational sequence
+
+**Core principle:** recording stays **continuous** from start to finish. Do not start and stop the recording between nodes.
+
+| Phase | Action | Movement / Distance | Duration / Notes |
+|---|---|---|---|
+| **1. Start** | Initial static capture | Stationary | Put the camera tripod on the floor, start the recording, and move away so that the camera stays still for **15 seconds**. This lets the internal gyros settle. |
+| **2. Walk** | Continuous move | **2 to 3 m** | Hold the camera slightly above 1.8 meters and walk forward at a steady pace of approximately 1 m/s. Keep line of sight to the previous pause point. |
+| **3. Pause** | Static anchor capture | Stationary | Put the camera tripod on the floor and move away so that the camera stays stationary for **15 seconds** while it records. |
+| **4. Loop** | Repeat sequence | Walk, pause cycle | Repeat the walk-pause cycle across the full site until you have complete area coverage. |
+| **5. End** | Final static capture | Stationary | Put the camera tripod on the floor and move away so that the camera stays stationary for **15 seconds** while it records, then stop the recording. |
+
+<figure>
+  <video
+    controls
+    loop
+    muted
+    playsInline
+    preload="metadata"
+    style={{ width: "100%", borderRadius: "8px", border: "1px solid hsl(var(--border))" }}
+    src="/polytron/video/08-congested-walk-pause-cycle.mp4"
+  />
+  <figcaption>The walk-pause cycle in a congested indoor area.</figcaption>
+</figure>
+
+## 4. Key anchor locations and spacing guidelines
+
+### Critical pause points
+
+Always do a 15-second stationary pause at these locations:
+
+- **Entrances and exits:** immediately before and after you cross any doorway threshold.
+- **Corners and turns:** before you turn a corner, and immediately after you complete the turn.
+- **Intersections:** at the center of hall or path intersections.
+- **Level transitions:** at the top and the bottom of staircases or ramps.
+- **Complex assets:** in front of key landmarks, CCTV installations, control panels, or high-value equipment.
+
+### Field operator quick reference rules
+
+**Rule of thumb 1: walk, pause, look back.** After you move, pause for 15 seconds and confirm visually that you can still see the previous pause location. Sufficient overlap gives seamless 3D reconstruction.
+
+**Rule of thumb 2: threshold and corner buffers.** Always pause directly before and directly after you go through doorways or blind corners.
+
+**Rule of thumb 3: if in doubt, pause.** If continuous visual coverage feels interrupted or blocked, add an extra 15-second pause point before you continue.
+
+## 5. Post-capture and power down
+
+1. Confirm that the final 15-second static capture is complete.
+2. Stop the continuous recording from the app or the camera button.
+3. Press and hold the **Power** button until the unit powers off.
+4. Secure the camera hardware and store the media cards for ingestion into the Polytron.AI engine.

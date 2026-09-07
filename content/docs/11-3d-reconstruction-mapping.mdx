@@ -1,0 +1,93 @@
+---
+title: "3D Reconstruction and Mapping"
+order: 11
+section: "Scanning Field Guides"
+description: "DJI 360 capture procedure: a perimeter pass followed by a two-axis grid traverse, at 1.6 m on a monopod."
+---
+
+## 1. Executive summary and purpose
+
+**Subject:** area scanning field guide for the 3D reconstruction and mapping protocol.
+
+This manual gives the standardized procedure to do a high-density 360 spatial scan of a target area with a DJI 360 camera. The perimeter-and-grid movement pattern gives the maximum visual overlap for 3D reconstruction and mapping.
+
+## 2. Hardware requirements and pre-recording setup
+
+### Essential hardware checklist
+
+- **DJI 360 camera:** the primary capture device for panoramic spherical imagery.
+- **Monopod:** a rigid, stable mount.
+- **Power and memory:** spare batteries for extended operations, and a minimum of **128 GB memory storage**.
+- **Mobile control device:** a smartphone that runs the DJI MIMO app, for remote monitoring and capture control.
+
+![DJI 360 camera on a monopod](11-dji-camera.png)
+
+### Camera configuration setup
+
+1. **Power on:** press the **Power** button once to turn on the camera.
+2. **Video settings:** set the recording resolution to **5.7K at 30 FPS**.
+3. **App pair (optional):** enable Bluetooth and Wi-Fi on your mobile device to connect to the DJI MIMO app for remote start and stop.
+4. **Scanning height:** hold the camera at **1.6 meters (5 feet 3 inches)** above ground level.
+
+![Scanning height of 1.6 m, held on the monopod](11-dji-scanning-height.jpg)
+
+### Environmental best practices
+
+- **Height discipline:** do not raise or lower the camera during an active pass. Keep the 1.6 m elevation exactly.
+- **Wall clearance:** keep at least one arm's length of clearance from walls and structural barriers.
+- **Lens clearance:** make sure that all lenses are clean and are not obstructed by straps, mounts, or cables.
+- **Pacing:** keep a steady walking speed of approximately 1 m/s through both passes. Do not make sudden movements or fast rotations.
+- **Grid spacing:** keep the parallel grid lines evenly spaced to prevent coverage gaps in the area of interest.
+- **Obstacle navigation:** if an obstacle blocks a grid line, go around it smoothly, keep the camera orientation and height, then continue the line immediately after you pass.
+
+## 3. Standardized operational workflow
+
+<figure>
+  <video
+    controls
+    loop
+    muted
+    playsInline
+    preload="metadata"
+    style={{ width: "100%", borderRadius: "8px", border: "1px solid hsl(var(--border))" }}
+    src="/polytron/video/11-dji-scan-pass.mp4"
+  />
+  <figcaption>A DJI 360 scanning pass held level at 1.6 m.</figcaption>
+</figure>
+
+### Step-by-step operational workflow
+
+**Core principle:** recording stays **continuous** from start to finish. Do not start and stop the recording between nodes.
+
+**Scanning height:** hold the DJI 360 camera on the monopod at **1.6 meters (5 feet 3 inches)** above ground level. Keep the camera level through the pass. Give the camera the maximum view and keep it unobstructed.
+
+#### Step 1: perimeter scan
+
+- Start at a designated corner of the area of interest (AOI).
+- Walk continuously along the outer boundary of the AOI until the perimeter is fully enclosed.
+
+![Perimeter scanning route: walk continuously along the outer boundary until the perimeter is enclosed](11-dji-route-1-perimeter.png)
+
+#### Step 2: X-axis grid traverse
+
+- Move to the starting boundary of the X-axis.
+- Walk forth and back along the X-axis, left to right then right to left, in parallel lines until you traverse the full length of the area.
+
+![X-axis scanning route: parallel lines left to right and right to left across the length of the area](11-dji-route-2-x-axis.png)
+
+#### Step 3: Y-axis grid traverse
+
+- Pivot 90 degrees to align with the Y-axis.
+- Walk forth and back along the Y-axis, top to bottom then bottom to top, in parallel lines across the full width of the area.
+
+![Y-axis scanning route: parallel lines top to bottom and bottom to top across the width of the area](11-dji-route-3-y-axis.png)
+
+#### Step 4: completion
+
+Stop the recording when you return to the final point. Power down the equipment with the standard shutdown procedure.
+
+## 4. Post-capture and power down
+
+1. Stop the continuous recording from the DJI MIMO app or the camera button.
+2. Press and hold the **Power** button until the unit powers off.
+3. Secure the camera hardware and store the media cards for ingestion into the Polytron.AI engine.

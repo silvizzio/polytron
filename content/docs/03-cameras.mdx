@@ -1,0 +1,63 @@
+---
+title: "Cameras"
+order: 3
+section: "Polytron One"
+description: "Add, edit, and group cameras, set recording schedules, and enable video analytics alarms."
+---
+
+In **Cameras > General**, the left panel shows all the cameras in the system. In this example, 9 cameras are online and 0 are offline.
+
+![The camera list in the General tab](03-cameras-list.png)
+
+## Add a camera
+
+To add a camera, click **+ Add Camera**, enter the IP address range, and click **Scan For Cameras**. Select the camera, then click **Add Camera**. In this example, camera 192.168.21.36 is added to the system.
+
+![The Add Camera dialog with the IP range scan](03-camera-add.png)
+
+## Edit a camera
+
+After you add the camera successfully, it appears in the camera list. To edit it, select the camera from the list and click **Edit**.
+
+![Select the camera from the list and click Edit](03-camera-edit-select.png)
+
+Change the camera name. Set **Panorama Camera** to **Yes** for Polytron G1 and G2 cameras. Then click **Apply Changes**.
+
+![The camera properties, with Panorama Camera set to Yes](03-camera-edit-properties.png)
+
+**Image Settings** lets you adjust the image properties. If the camera is installed upside down, turn on **Placement upside down**, then click **Save**.
+
+![The Image Settings panel](03-camera-image-settings.png)
+
+## Group the cameras
+
+After you add a camera, the system puts it in the **Default Group**. You can move it into different groups or sub-groups.
+
+To manage the groups, click **Add** or **Delete**. After you define the groups, assign a camera: click it and drag it into the group. If you delete a group, its cameras return to the previous level.
+
+![The camera group tree](03-camera-grouping.png)
+
+## Recording
+
+After you add a camera, recording does not start automatically. To start recording, select the camera, then add a **New Schedule**.
+
+![Add a new recording schedule for the selected camera](03-recording-new-schedule.png)
+
+Select the start time and the end time. If you set both to 00:00, the camera records for 24 hours. Select the **Scheduled Days**, then click **Next**.
+
+![Set the schedule times and days](03-recording-times.png)
+
+You can copy the schedule to **other cameras**, or select **Do not copy to other cameras**. Then click **Confirm**.
+
+![Copy the schedule to other cameras](03-recording-copy.png)
+
+## Alarm settings
+
+**Alarm Settings** lets you enable video analytics on a camera.
+
+1. Select the camera.
+2. Under **Detection Library**, select the video analytics (VA) to apply, then click **Enable Detection**. When the VA is active, the VA icon next to the camera lights up.
+3. Set the detection area. Click **Panorama View** on the camera, then right-click on the screen to set the area. You can click multiple points to define it.
+4. Set the activation schedule, in days and hours. **00:00 hrs to 00:00 hrs** means 24-hour recording.
+
+![The Alarm Settings panel with the detection library and schedule](03-alarm-settings.png)
