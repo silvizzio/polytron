@@ -73,8 +73,8 @@ export default function Home() {
           <div style={{ display: 'flex', flexWrap: 'nowrap', gap: '8px' }}>
             {[
               { label: 'Overview', slug: '01-overview' },
-              { label: 'Cameras', slug: '03-cameras' },
-              { label: 'Indoor Area', slug: '09-indoor-area' },
+              { label: 'Polytron One', slug: '02-polytron-one-getting-started' },
+              { label: 'Scanning Field Guides', slug: '08-indoor-congested-area' },
             ].map((q) => (
               <Link key={q.slug} href={`/docs/${q.slug}`} className="inline-flex items-center gap-1.5 text-xs rounded-md px-3 py-1.5" style={{ background: 'transparent', color: 'hsl(var(--foreground))', border: '1px solid hsl(var(--border))', whiteSpace: 'nowrap' }}>
                 {q.label}
