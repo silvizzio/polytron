@@ -1,7 +1,6 @@
-"use client"
+'use client'
 
 import { useState } from 'react'
-import { BASE_PATH, PDF_PREFIX } from '@/lib/site'
 
 type Props = {
   title: string
@@ -15,13 +14,13 @@ export default function PrintButton({ slug }: Props) {
   async function handle() {
     setLoading(true)
     try {
-      const res = await fetch(BASE_PATH + '/api/pdf?slug=' + encodeURIComponent(slug))
-      if (!res.ok) throw new Error(await res.text())
+      const res = await fetch('/polytron/api/pdf?slug=' + encodeURIComponent(slug))
+      if (!res.ok) throw new Error('Failed')
       const blob = await res.blob()
       const url = URL.createObjectURL(blob)
       const a = document.createElement('a')
       a.href = url
-      a.download = PDF_PREFIX + '-' + slug + '.pdf'
+      a.download = 'Project-' + slug + '.pdf'
       a.click()
       URL.revokeObjectURL(url)
     } catch (e) {
