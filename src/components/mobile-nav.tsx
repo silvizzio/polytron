@@ -30,7 +30,7 @@ export default function MobileNav({ docsBySection, currentSlug, lastUpdated }: {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px 16px', borderBottom: '1px solid hsl(var(--border))', marginBottom: '12px' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '7px' }}>
                 <img src="/polytron/logo.svg" alt="POLYTRON.AI" style={{ display: 'block', width: '148px', height: 'auto' }} />
-                <p style={{ fontSize: '10px', color: 'hsl(var(--muted-foreground))' }}>Documentation · v1.0 · {lastUpdated?.monthYear ?? 'July 2026'}</p>
+                <p style={{ fontSize: '10px', color: 'hsl(var(--muted-foreground))' }}>Documentation · v1.0 · {lastUpdated?.monthYear ?? new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</p>
               </div>
               <button onClick={() => setOpen(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'hsl(var(--muted-foreground))', padding: '4px' }}>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6 6 18M6 6l12 12"/></svg>

@@ -24,7 +24,7 @@ export default function Sidebar({ docsBySection, lastUpdated }: Props) {
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '0 16px' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '7px' }}>
               <img src="/polytron/logo.svg" alt="POLYTRON.AI" style={{ display: 'block', width: '148px', height: 'auto' }} />
-              <p style={{ fontSize: '10px', color: 'hsl(var(--muted-foreground))' }}>Documentation · v1.0 · {lastUpdated?.monthYear ?? 'July 2026'}</p>
+              <p style={{ fontSize: '10px', color: 'hsl(var(--muted-foreground))' }}>Documentation · v1.0 · {lastUpdated?.monthYear ?? new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</p>
             </div>
           </div>
         </div>
