@@ -15,7 +15,7 @@ export default function Home() {
   const searchDocs = getSearchIndex()
 
   const sections = [
-    { title: 'Polytron One', desc: 'The platform user guide: cameras, live view, playback, alerts, and settings.', links: [
+    { title: 'POLYTRON ONE', desc: 'The platform user guide: cameras, live view, playback, alerts, and settings.', links: [
       { label: 'Getting Started', desc: 'What the platform does, how to log in, and what the overview panel shows.', slug: '02-polytron-one-getting-started' },
       { label: 'Cameras', desc: 'Add, edit, and group cameras. Set recording schedules and analytics alarms.', slug: '03-cameras' },
       { label: 'Live View', desc: 'Multi-panel viewing layouts.', slug: '04-live-view' },
@@ -32,7 +32,7 @@ export default function Home() {
   ]
 
   const heroes = [
-    { label: 'Polytron One', desc: 'Log in, manage cameras, and work with live view and playback.', slug: '02-polytron-one-getting-started' },
+    { label: 'POLYTRON ONE', desc: 'Log in, manage cameras, and work with live view and playback.', slug: '02-polytron-one-getting-started' },
     { label: 'Scanning Field Guides', desc: 'Capture procedures for every site condition, from setup to handoff.', slug: '08-indoor-congested-area' },
   ]
 
@@ -45,7 +45,7 @@ export default function Home() {
         <div className="mb-12">
           <h1 className="text-3xl font-medium mb-2">POLYTRON.AI Documentation</h1>
           <p className="text-muted-foreground text-sm">
-            The Polytron One platform user guide, and the field procedures for 360 and DJI area scanning.
+            The POLYTRON ONE platform user guide, and the field procedures for 360 and DJI area scanning.
           </p>
         </div>
 
@@ -68,12 +68,12 @@ export default function Home() {
           <div>
             <p className="text-xs uppercase tracking-wide mb-2" style={{ color: 'hsl(var(--muted-foreground))' }}>Getting started</p>
             <h2 className="text-base font-medium mb-1" style={{ color: 'hsl(var(--foreground))' }}>New here?</h2>
-            <p className="text-xs leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>Start with the overview. Platform users continue to Polytron One. Field operators go to the guide for their site condition.</p>
+            <p className="text-xs leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>Start with the overview. Platform users continue to POLYTRON ONE. Field operators go to the guide for their site condition.</p>
           </div>
           <div style={{ display: 'flex', flexWrap: 'nowrap', gap: '8px' }}>
             {[
               { label: 'Overview', slug: '01-overview' },
-              { label: 'Polytron One', slug: '02-polytron-one-getting-started' },
+              { label: 'POLYTRON ONE', slug: '02-polytron-one-getting-started' },
               { label: 'Scanning Field Guides', slug: '08-indoor-congested-area' },
             ].map((q) => (
               <Link key={q.slug} href={`/docs/${q.slug}`} className="inline-flex items-center gap-1.5 text-xs rounded-md px-3 py-1.5" style={{ background: 'transparent', color: 'hsl(var(--foreground))', border: '1px solid hsl(var(--border))', whiteSpace: 'nowrap' }}>
@@ -114,7 +114,7 @@ export default function Home() {
 
       <footer style={{ borderTop: '1px solid hsl(var(--border))', padding: '16px', maxWidth: '1440px', width: '100%', margin: '0 auto', display: 'flex', flexWrap: 'wrap', gap: '8px', justifyContent: 'space-between', alignItems: 'center', marginTop: 'auto' }}>
         <p style={{ fontSize: '12px', color: 'hsl(var(--muted-foreground))' }}>POLYTRON.AI Documentation</p>
-        <p style={{ fontSize: '12px', color: 'hsl(var(--muted-foreground))' }}>Vizzio Confidential</p>
+        <p style={{ fontSize: '12px', color: 'hsl(var(--muted-foreground))' }}>VIZZIO Confidential</p>
       </footer>
     </div>
   )

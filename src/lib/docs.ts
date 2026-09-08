@@ -79,9 +79,12 @@ export function getDocCover(slug: string): string | null {
   const filePath = path.join(DOCS_PATH, `${slug}.mdx`)
   if (!fs.existsSync(filePath)) return null
   const raw = fs.readFileSync(filePath, 'utf8')
-  const { content } = matter(raw)
+  const { data, content } = matter(raw)
+  // An explicit `cover:` in the frontmatter wins. Otherwise fall back to the
+  // first image in the body.
+  const explicit = typeof data.cover === 'string' ? data.cover : null
   const match = content.match(/!\[[^\]]*\]\(([^)\s]+)\)/)
-  if (!match) return null
-  const filename = path.basename(match[1])
+  if (!explicit && !match) return null
+  const filename = path.basename(explicit || match![1])
   return `/polytron/api/img/${filename}`
 }
