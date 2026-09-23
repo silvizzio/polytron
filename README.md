@@ -129,7 +129,12 @@ relative (`/docs/03-cameras`).
 
 Vercel project `polytron`, framework Next.js, no extra config.
 
-Required environment variable (Production):NEXT_PUBLIC_BASE_URL = https://polytron-ai.vercel.app 
+Set this environment variable for Production:
+
+```text
+NEXT_PUBLIC_BASE_URL=https://polytron-ai.vercel.app
+```
+
 The PDF route renders live pages with headless Chromium and needs a real origin.
 Point it at the project's own `.vercel.app` domain, not `www.vizzio.space`, so
 it does not fetch back through the proxy.
