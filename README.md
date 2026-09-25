@@ -152,3 +152,7 @@ Both rules are needed; a single `:path*` rule misses the bare `/polytron` root.
 
 Content was imported from four Notion scanning field guides and the Polytron One
 V1.5 user guide draft. Notion is no longer the source of truth; edit the MDX.
+
+## Editorial reference
+
+Follow [Documentation writing style](./EDITORIAL-STYLE.md) when revising the guide. Keep explanations natural, practical, and consistent with the product.
